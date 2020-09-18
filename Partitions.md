@@ -1,4 +1,4 @@
-# Computating Partitions of a Number
+# Computing Partitions of a Number
 This repo is meant for holding neat mathematical computer computations 
 
 <br>

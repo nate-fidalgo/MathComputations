@@ -34,3 +34,5 @@ If you think deeper this gives away to quickly find types of diophaintine equati
 Stay tuned more to come probably going to add functions to compute the primitive roots , primative kth roots of unity mod n  ,...etc
 <br>
 As well as fermat little theorem / euler theorem , applications to test for probable primes , and perhaps discussion on the discrete log problem
+<br>
+Any comments are welcome for improvement or suggestions in the QUESTION ISSUES leave them there

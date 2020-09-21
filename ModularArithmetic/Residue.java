@@ -1,9 +1,9 @@
-
 import java.math.BigInteger;
 import java.util.Scanner;
+import java.util.* ;
 
 public class Residue {
-
+private static Set<BigInteger> rclass = new TreeSet<BigInteger>();
   public static void main(String[] args) {
 
 System.out.println( "---Modular Residue Calculator---" );
@@ -22,13 +22,24 @@ String mod = in.nextLine();  ;
 System.out.println( "Enter the power " ); 
 String p = in.nextLine();  
 
-System.out.print("Residue class : [" ); 
+System.out.print("Residue table : [" ); 
 
 residueclass(new BigInteger( p ),new BigInteger( mod ) ) ; 
 
      System.out.println( " ] " ) ;
 
+System.out.println();
+System.out.print("Residue set : [" ) ;
+Iterator<BigInteger> irclass = rclass.iterator();
+BigInteger residuecount = BigInteger.ZERO ;
+while( irclass.hasNext() == true )
+{
+System.out.print( " " + irclass.next() ) ;
+residuecount = residuecount.add( BigInteger.ONE ) ;
+}
 
+System.out.println( " ] " ) ;
+System.out.println( "Number of distinct residues in this residue set/class : " + residuecount ) ;
 }
 
 
@@ -72,6 +83,8 @@ BigInteger residue = x;
 //residue = residue.pow( power ) ;
 //residue = residue.mod( mod_n ) ;
 residue = residue.modPow( power, mod_n ) ;
+
+rclass.add(residue) ;
 System.out.print( " " + residue ) ;
 
 }

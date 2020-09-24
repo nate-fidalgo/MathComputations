@@ -30,6 +30,9 @@ This is because by default its working on the board below change pegbrd to any b
 <br> 
 <pre>
 <code>
+
+       //Modify this according to what peg board you want to solve in PegSolitaireSolver.java
+       //Later all probably provide an easy file that you can just pass to PegSolitaireSolver.java so you dont have to recompile/rerun
 	private static int pegbrd[][] = {
 	{2,2,1,2,2},
 	{2,1,1,2,2},

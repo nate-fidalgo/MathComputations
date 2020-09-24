@@ -42,4 +42,7 @@ This is because by default its working on the board below change pegbrd to any b
 </pre>
 
 Go here for javadocs for peg solitare program and associated class if you want to dig a little deeper into how its made. :)
+<br>
 https://nate-fidalgo.github.io/MathComputations/pegdocs/package-summary.html
+<br>
+Really neat backtracking algorithm so cool some pegboard you think up dont have a solution other do but this program can give you the answer to all boards!

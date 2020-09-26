@@ -153,10 +153,11 @@ Letter z : 8201 words, percentage = 4.217905396717636
 </pre>
 
 <br>
-Would have never thought that letters J and Q are even lower probability the even X that a word has it in it.
-Note this is using java DictionaryAnalyzer engmix.txt obviously you may have a different english dictionary i was using engmix.txt. The only really requirement is any dictionary you uses has to be in a .txt format with word seperated by a newline like this.
-
-
+Would have never thought that letters J and Q are even lower probability then even X that a word has in it.
+Note this is using java DictionaryAnalyzer engmix.txt obviously you may have a different english dictionary you want to use. I was using engmix.txt which i believe is a pretty accurate dictionary. The only really requirement is any dictionary file you use with this program has to be in a .txt format with word seperated by a newline like this.
+<br>
+For example this is a section of the engmix.txt dictionary file. The below sample dictionary should be obvious on how your dictionary should be structured a distinct single word on a seperate line that pretty much the only requirement for this program to process it correctly!
+<br>
 <pre>
 <code>
 ...

@@ -34,7 +34,7 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
               else
               return "NO" ;
               
-           case 26: 
+           case 26: ////this was for Log derivative which should be different then 1/var but for now i am fine with just letting it be the same as Ln
               if( isPrimitiveArgument( arg ) == true )
               return "1/" + var  ; 
               else

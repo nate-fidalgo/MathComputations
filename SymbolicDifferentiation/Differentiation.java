@@ -13,53 +13,53 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
 } ; 
 
 private static String var = "x" ;
-private static String funct = "" ;
 private static DiffTable diff_Table = new DiffTable() ;
-public static int abcdefg = 0 ;
 
-public Differentiation( String diff_var , String function )
-{
-    
-  var = diff_var ;
-  funct = function ;
-    
-}
-
-
-
+/*
+ * Simple function to return the private static String function[] array which holds all your math functions
+ * one can differentiate currently.
+ */
 public static String[] getFunctions() 
 {
      return function ;
 }
 
-
+/**
+ * A function to return the entire diff_Table a dump of what derivatives are currently in the table
+ * @return diff_Table which is a HashTable of function key to ---> derivatives values computed so far.
+ */
 public static DiffTable getDiff_Table()
 {
   return diff_Table ;  
     
 }
 
+/**
+ * A function to test if the expression has no + or - characters in it 
+ * @param expr the String expression to test for + or -
+ * @return true if no + and - characters are in the expr String, false otherwise
+ */
 private static boolean noPlus_orMinus( String expr )
 {
  
  int i = 0 ;
  while( i < expr.length() )
  {
-  
    if( expr.charAt(i) == '+' || expr.charAt(i) == '-' )
    return false ;
-   
    i++ ;   
-     
  }
     
- 
  return true ;
  
 }
 
 
-
+/**
+ * A function to test if the expression has no - characters in it 
+ * @param expr the String expression to test for - characters
+ * @return true if no - characters are in the expr String, false otherwise
+ */
 private static boolean noMinus( String expr )
 {
  
@@ -74,7 +74,6 @@ private static boolean noMinus( String expr )
      
  }
     
- 
  return true ;
  
 }
@@ -82,8 +81,11 @@ private static boolean noMinus( String expr )
 
 
 
-
-
+/**
+ * A function to test if the expression has no / characters in it 
+ * @param expr the String expression to test for / characters
+ * @return true if no / characters are in the expr String, false otherwise
+ */
 private static boolean hasDivides( String expr )
 {
     
@@ -104,11 +106,13 @@ int i = 0 ;
 }    
     
     
-    
+ /**
+  * Internal function to determine if expr needs (...) around it like (expr)   
+  * @param expr A String that is the expression to check 
+  * @return true if the expr needs (...) , false otherwise
+  */
 private static boolean needsParAround( String expr )
 {
-   
-   
        
    if( ("" + expr.charAt(0)).equals( "(" ) == true ) 
    {
@@ -145,18 +149,24 @@ private static boolean needsParAround( String expr )
             
    }
     
-
-    
+   
 }
 
 
+//##################################################################################################################
+//THIS SECTION OF THE CODE IS ALL THE DIFFERENTIATION RULES YOU LEARN IN DIFFERENTIAL CALCULUS 
+//WHEN IMPLEMENTING NEW SPECIAL FUNCTION ADD THEM TO THE END OF THIS CODE SECTION WITH APPROPRIATE FUNCTION NAMES
 
 
+/**
+ * This function the derivative of the sum formula
+ * @param expr1 The first expression to differentiate in the sum
+ * @param expr2 The second expression to differentiate in the sum
+ * @return The derivatives of the sum 
+ */
 private static String adddiff( String expr1 , String expr2 )
 {
 
-
-System.out.println( "Gott in add + " + expr1 + "   " + expr2 ) ;
 String f1 = diff( expr1 ) ;
 String f2 = diff( expr2 ) ;
 
@@ -175,10 +185,8 @@ if( isConstant( f1 ) == true && isConstant( f2 ) == true )
 
 if( f1.equals( "0" ) == true && f2.equals( "0" ) != true )
 {
-
 diff_Table.addDiff( expr1 + "+" + expr2 , f2 ) ; 
 return f2 ;
-
 }
 else
 if( f1.equals( "0" ) != true && f2.equals( "0" ) == true )
@@ -191,18 +199,13 @@ return f1 ;
 else
 {
  
-
-
-
-
  if( f1.equals( f2 ) == true )
  {
   
   if( f1.charAt( 0 ) == '-' || needsParAround( f1 ) == true )
   {
     diff_Table.addDiff( expr1 + "+" + expr2 ,  "2*(" + f1 + ")" ) ;        
-    return "2*(" + f1 + ")"  ;    
-      
+    return "2*(" + f1 + ")"  ;          
   }
      
    diff_Table.addDiff( expr1 + "+" + expr2 ,  "2*" + f1 ) ;        
@@ -210,7 +213,6 @@ else
      
  }
 
- //Put in simplification algorithms hereeee   
  if( needsParAround( f1 ) == true )
  f1 = "(" + f1 + ")" ;
 
@@ -226,15 +228,18 @@ else
 
 }
 
-
+/**
+ * This function is for the derivative of products formula
+ * @param expr1 The first expression to differentiate in the product
+ * @param expr2 The second expression to differentiate in the product
+ * @return The derivative of a product of expr1 x expr2 
+ */
 private static String proddiff( String expr1 , String expr2 )
 {
 
-System.out.println( "got to proddiff " + expr1 + "  " + expr2 ) ;
 String f1 = diff( expr1 ) ;
-System.out.println( "got to proddiff " + expr1 + "  " + expr2 + "  " + f1) ;
 String f2 = diff( expr2 ) ;
-System.out.println( expr1 + "  " + expr2 + "   " + f1 + "    " + f2 + "   " + "in Product method!!! " ) ;
+
 if( needsParAround( f1 ) == true )
 f1 = "(" + f1 + ")" ;
 
@@ -244,10 +249,8 @@ f2 = "(" + f2 + ")" ;
 
 if( f1.equals( "0" ) == true && f2.equals( "0" ) == true )
 {
-
 diff_Table.addDiff( expr1 + "*" + expr2 , "0"  ) ;    
-return "0" ;  
-   
+return "0" ;    
 }
 else
 if( f1.equals( "0" ) == true && f2.equals( "0" ) != true )
@@ -326,15 +329,20 @@ return f1 + "*" + expr2 + "+" + f2 + "*" + expr1 ;
 
 }
 
-
+/**
+ * This function the derivative of the difference of two functions
+ * @param expr1 The first expression to differentiate in the difference
+ * @param expr2 The second expression to differentiate in the difference
+ * @return The derivative of the difference of two functions 
+ */
 private static String subdiff( String expr1 , String expr2 )
 {
 
 
 String f1 = diff( expr1 ) ;
 String f2 = diff( expr2 ) ;
-System.out.println( "in subdiff this is its parmeters input " + expr1 + "   " + expr2 ) ;
-System.out.println( f1 + " -in subdiff --- " + f2 ) ;
+
+
 if( isConstant( f1 ) == true && isConstant( f2 ) == true )
 {
  try{
@@ -346,7 +354,7 @@ if( isConstant( f1 ) == true && isConstant( f2 ) == true )
  catch(Exception e ){}
  
 }
-//System.out.println( f1 + "----" + f2 ) ;
+
 if( needsParAround( f1 ) == true )
 f1 = "(" + f1 + ")" ;
 
@@ -385,7 +393,7 @@ return "0" ;
 
 //if( needsParAround( f2 ) == true )
 //f2 = "(" + f2 + ")" ;    
-    System.out.println( "Gottttt here in subdiff at end " ) ;
+
 diff_Table.addDiff( expr1 + "-" + expr2 , f1 + "-" + f2 ) ;        
 return f1 + "-" + f2   ;       
        
@@ -396,10 +404,19 @@ return f1 + "-" + f2   ;
 }
 
 
+/**
+ * This method is for the derivative of expr^power 
+ * Note this method takes into account a lot of possibilities
+ * 1) expr = constant expression , power = nonconstant such as 2^x , e^x , (3+4)^(x^2+1) ...
+ * 2) expr = nonconstant ,         power = constant  such as x^3 , (x+4)^6 ...
+ * 3) expr = nonconstant ,         power = nonconstant such as x^x , (x^2+1)^(x+5)
+ * 4) expr = constant expression , power = constant expression  such as 3^4 ,(3+Sin[56])^(Cos[32]) which are all zero
+ * @param expr the base of the total expression expr^power
+ * @param power the power of the total expression expr^power
+ * @return the derivative of expr^power
+ */
 private static String powdiff( String expr , String power )
 {
-
-System.out.println( "in Power method!!! " + expr + "  " + power ) ;
 
 if( power.equals( "0" ) == true || expr.equals( "0" ) == true )
 {
@@ -409,25 +426,18 @@ if( power.equals( "0" ) == true || expr.equals( "0" ) == true )
 
 if( isConstantExpression( power ) == true && isConstantExpression( expr ) == true )
 {
-System.out.println( "in Power method!!! is a Constant " ) ;
 diff_Table.addDiff( expr + "^" + power , "0" ) ;
 return "0" ;
 }
 
 if( isConstantExpression( power ) == true && isConstantExpression( expr ) == false )
 {
-    
-
-    
-System.out.println( "in Power method!!! " + expr + "  " + power ) ;
+   
 String f1 = diff( expr ) ;
-System.out.println( "in Power method!!! " + expr + "  " + power + "   " + f1 ) ;
 String resultpow = subtractOne( power ) ;
-System.out.println( "heyyyyyyyyyyyyyyyyyy   needs Par " + f1 ) ;
 //if( needsParAround( f1 ) == true )
 //f1 = "(" + f1 + ")" ;
 
-System.out.println( f1 ) ;
 if( f1.equals( "1" ) == true )
 {
  
@@ -451,7 +461,6 @@ if( f1.equals( "1" ) == true )
 
 }
 else{
-System.out.println( "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT" ) ;
 
  if( resultpow.equals( "0" ) == true && power.equals( "1" ) == true ) //I think I only need to check for resultpower => power=1
  {
@@ -574,7 +583,11 @@ return "Errrrrrrrroooorrrrr" ;
 
 }
 
-
+/**
+ * Simple method to just subtract one from the function
+ * @param func the function to subtract one from
+ * @return (func-1) or if func is a integer func - 1
+ */
 private static String subtractOne( String func )
 {
   
@@ -588,21 +601,22 @@ private static String subtractOne( String func )
       
   }
     
-     
     
 }
 
-//needs to improve simplification algorithm....ssssss
+/**
+ * This function is the derivative of the quotient of two expressions
+ * @param expr1 The first expression to differentiate in the quotient
+ * @param expr2 The second expression to differentiate in the quotient
+ * @return The derivative of the quotient
+ */
 private static String quotdiff( String expr1 , String expr2 )
 {
     
-    
     if( expr1.equals( expr2 ) == true )
     {
-        
        diff_Table.addDiff( expr1 + "/" + expr2 , "0" ) ; 
        return "0" ;         
-    
     }
     
         
@@ -617,9 +631,7 @@ private static String quotdiff( String expr1 , String expr2 )
         
     }
     
-    
-     
-   
+  
    if( f1.equals( "0" ) == true )
    {
       
@@ -637,7 +649,6 @@ private static String quotdiff( String expr1 , String expr2 )
      return "(" + "-1*" + f2 + "*" + expr1 + ")/" + expr2 + "^2" ;   
        
    }
-   
    
    
    if( f2.equals( "0" ) == true ) 
@@ -659,7 +670,6 @@ private static String quotdiff( String expr1 , String expr2 )
        
    }
     
-   
       
     if( needsParAround( f1 ) == true )
     f1 = "(" + f1 + ")" ;
@@ -679,15 +689,16 @@ private static String quotdiff( String expr1 , String expr2 )
    diff_Table.addDiff( expr1 + "/" + expr2 , "(" + f1 + "*" + expr2 + "-(" + f2 + "*" + expr1 + "))/" + expr2 + "^2" ) ; 
    return "(" + f1 + "*" + expr2 + "-(" + f2 + "*" + expr1 + "))/" + expr2 + "^2" ;   
      
-    
-    
-    
 }
 
 
 
 
-
+/**
+ * This function process the derivative of exponential function
+ * @param expr The expression that e is raised to as in e^(expr)
+ * @return The derivatives of e^(expr)
+ */
 private static String expdiff( String expr )
 {
 
@@ -713,6 +724,11 @@ return "Exp[" + expr + "]*" + f1 ;
 }
 
 
+/**
+ * This function process the derivative of log function
+ * @param expr The expression that log argument is. 
+ * @return The derivatives of log(expr)
+ */
 private static String logdiff( String expr )
 {
 
@@ -726,6 +742,11 @@ return f1 + "/" + expr ;
 
 }
 
+/**
+ * This function process the derivative of sin function
+ * @param expr The expression that Sin argument is
+ * @return The derivatives of Sin[expr]
+ */
 private static String sindiff( String expr )
 {
 
@@ -746,7 +767,11 @@ return "Cos[" + expr + "]*" + f1  ;
 
 }
 
-
+/**
+ * This function process the derivative of cos function
+ * @param expr The expression that Cos argument is
+ * @return The derivatives of Cos[expr]
+ */
 private static String cosdiff( String expr )
 {
 
@@ -772,7 +797,11 @@ return "-1*Sin[" + expr + "]*" + f1 ;
 
 }
 
-
+/**
+ * This function process the derivative of tan function
+ * @param expr The expression that Tan argument is
+ * @return The derivatives of Tan[expr]
+ */
 private static String tandiff( String expr )
 {
 
@@ -798,11 +827,14 @@ return "Sec[" + expr + "]^2*" + f1 ;
 
 } 
 
-
+/**
+ * This function process the derivative of sec function
+ * @param expr The expression that Sec argument is
+ * @return The derivatives of Sec[expr]
+ */
 private static String secdiff( String expr )
 {
  
-  
 String f1 = diff( expr ) ;
 
 if( f1.equals( "1" ) == true )
@@ -824,14 +856,16 @@ return "Sec[" + expr + "]" + "*Tan[" + expr + "]" + "*(" + f1 + ")"  ;
 diff_Table.addDiff( "Sec[" + expr + "]" , "Sec[" + expr + "]" + "*Tan[" + expr + "]" + "*" + f1  ) ; 
 return "Sec[" + expr + "]" + "*Tan[" + expr + "]" + "*" + f1 ;    
     
-    
 }
 
-
+/**
+ * This function process the derivative of cot function
+ * @param expr The expression that Cot argument is
+ * @return The derivatives of Cot[expr]
+ */
 private static String cotdiff( String expr ) 
 {
  
-    
 String f1 = diff( expr ) ;
 
 if( f1.equals( "1" ) == true )
@@ -839,32 +873,32 @@ if( f1.equals( "1" ) == true )
     
 diff_Table.addDiff( "Cot[" + expr + "]" , "-1*Csc[" + expr + "]^2" ) ; 
 return "-1*Csc[" + expr + "]^2" ;
-        
     
 }
-
-
 
 if( needsParAround( f1 ) == true )
 {
   
     diff_Table.addDiff( "Cot[" + expr + "]" , "-1*Csc[" + expr + "]^2" + "*(" + f1 + ")"  ) ; 
     return "-1*Csc[" + expr + "]^2" + "*(" + f1 + ")" ;
-    
+
 }
 
 diff_Table.addDiff( "Cot[" + expr + "]" , "-1*Csc[" + expr + "]^2" + "*" + f1  ) ; 
     
-    return "-1*Csc[" + expr + "]^2" + "*" + f1 ;
-    
+return "-1*Csc[" + expr + "]^2" + "*" + f1 ;
     
 }
 
 
-
+/**
+ * This function process the derivative of csc function
+ * @param expr The expression that Csc argument is
+ * @return The derivatives of Csc[expr]
+ */
 private static String cscdiff( String expr )
 {
-  
+	
 String f1 = diff( expr ) ;
 
 if( f1.equals( "1" ) == true )
@@ -874,7 +908,6 @@ diff_Table.addDiff( "Csc[" + expr + "]" , "-1*Csc[" + expr + "]*Cot[" + expr + "
 return "-1*Csc[" + expr + "]*Cot[" + expr + "]" ;     
     
 }
-
 
 if( needsParAround( f1 ) == true )
 {
@@ -887,18 +920,21 @@ return "-1*Csc[" + expr + "]*Cot[" + expr + "]" + "*(" + f1 + ")" ;
 diff_Table.addDiff( "Csc[" + expr + "]" , "-1*Csc[" + expr + "]*Cot[" + expr + "]" + "*" + f1   ) ;    
 return "-1*Csc[" + expr + "]*Cot[" + expr + "]" + "*" + f1 ;   
     
-    
 }
 
 
+//END OF DIFFERENTIAL CALCULUS DERIVATIVE FORMULAS FROM YOUR CALCULUS COURSES 
+//#################################################################################################################
 
-
-
-
-private static String diff( String func )
+/**
+ * This is the main method you want to call to differentiate any function
+ * @param func the function to differentiate 
+ * @return the derivative of func as a String
+ */
+public static String diff( String func )
 {
-System.out.println( "Top of diff " + func ) ;
-abcdefg++ ;
+//System.out.println( "Top of diff " + func ) ;
+
 String f = isKNOWN_diff( func ) ;
 
 if( f.equals( "NO" ) != true )
@@ -920,14 +956,9 @@ if( i != function.length )
     
    
  int indexs = getMatching( "]" , func.indexOf( "[" ) , "SEARCH RIGHT" , func ) ;   
- System.out.println( "*********************GGGGGGGGGGGGGOOOOOOOOOOOOOTTTTTTTTTTTTTTTT*************** " + indexs + "  " + func.length() + "  " + skipPar(func, indexs + 1 )) ; 
+
  if( indexs == (func.length() - 1 ) || ( indexs + skipPar(func, indexs + 1 )) == (func.length() - 1 ) )
  return diff_function( function[i] , func.substring( func.indexOf( "[" ) + 1, indexs ) ) ;
-    
-  System.out.println( "HHHHHHGYYTYTUYUYGJHKJHKJH" ) ;     
-
- //    if( diff_Table.getDeriv_OF( funct ).equals( "NOT IN TABLE" ) == false )
- //    return diff_Table.getDeriv_OF( funct ) ;
 
 
 }
@@ -938,50 +969,30 @@ String deriv_func = "" ;
 
 while( i < func.length() )
 {
-   System.out.println( "function in diff is " + func ) ;
-   System.out.println( "Table is " + diff_Table ) ;
+
     if( diff_Table.getDeriv_OF( func.substring(0,func.length()-1) ).equals( "NOT IN TABLE" ) == false )
     {
-       System.out.println( "Got in weirdstuff " ) ;
-        return diff_Table.getDeriv_OF( func.substring(0,func.length()-1)  ) ;   
-    
+        return diff_Table.getDeriv_OF( func.substring(0,func.length()-1)  ) ;      
     }
     
-    
-    System.out.println( "In while start " + i ) ;
-    System.out.println( "function in diff is " + deriv_func ) ;
+
     if( diff_Table.getDeriv_OF( func ).equals( "NOT IN TABLE" ) == false )
     return diff_Table.getDeriv_OF( func  ) ;   
     
-   System.out.println( "FFFFUUUUUUUCCCCCKKKKKKKKKK!!!!" ) ;
-  
-//if( diff_Table.getDeriv_OF( funct ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( funct ) ;   
-    System.out.println( "In while start2 " + i ) ;
    
 if( ( "" + func.charAt(i)).equals( "^" ) == true )    
 {
 operands = getOperands( func , i , "^" ) ;
- System.out.println( "got to ^ " + func ) ;
 deriv_func = powdiff( operands[0] , operands[1] ) ; 
-System.out.println( "got to ^ " + operands[0] + "  " + operands[1] + "  " + deriv_func + "  " + func ) ;
 diff_Table.addDiff( operands[0] + "^" + operands[1] , deriv_func ) ; 
-//if( diff_Table.getDeriv_OF( funct ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( funct ) ;
 
 }
 
 if( ( "" + func.charAt(i)).equals( "*" ) == true )    
 {
-   
-      
-    System.out.println( "got to * " + func ) ;
 operands = getOperands( func , i , "*" ) ;
 deriv_func = proddiff( operands[0] , operands[1] ) ; 
-System.out.println( "got to * " + operands[0] + "  " + operands[1] + "  " + deriv_func + "  " + func ) ;
 diff_Table.addDiff( operands[0] + "*" + operands[1] , deriv_func ) ; 
-//if( diff_Table.getDeriv_OF( "(" + func + ")" ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( "(" + func + ")" ) ;
 }
 
 if( ( "" + func.charAt(i)).equals( "/" ) == true )    
@@ -989,67 +1000,53 @@ if( ( "" + func.charAt(i)).equals( "/" ) == true )
 operands = getOperands( func , i , "/" ) ;
 deriv_func = quotdiff( operands[0] , operands[1] ) ; 
 diff_Table.addDiff( operands[0] + "/" + operands[1] , deriv_func ) ; 
-//if( diff_Table.getDeriv_OF( funct ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( funct ) ;
 }
 
 if( ( "" + func.charAt(i)).equals( "+" ) == true )    
-{System.out.println( "got ++++++++++++++++++++++++++++++++++++++ " ) ;
+{
 operands = getOperands( func , i , "+" ) ;
 deriv_func = adddiff( operands[0] , operands[1] ) ; 
 diff_Table.addDiff( operands[0] + "+" + operands[1] , deriv_func ) ; 
-//if( diff_Table.getDeriv_OF( func ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( func ) ;
 }
 
 
 if( ( "" + func.charAt(i)).equals( "-" ) == true )    
-{System.out.println( "got ------------------------------------ " ) ;
+{
 operands = getOperands( func , i , "-" ) ;
-//check for null first operand
 deriv_func = subdiff( operands[0] , operands[1] ) ; 
 diff_Table.addDiff( operands[0] + "-" + operands[1] , deriv_func ) ; 
-//if( diff_Table.getDeriv_OF( func ).equals( "NOT IN TABLE" ) == false )
-//return diff_Table.getDeriv_OF( func ) ;
 }
 
 i++ ;
 
 }
   
-  System.out.println( "Bottom of diff" ) ;
-  System.out.println( func + "%%%%%%%%%%%%%%%%%%%%" + deriv_func ) ;
-  //System.out.println( "Table is " + diff_Table ) ;
- 
   if( diff_Table.getDeriv_OF( func ).equals( "NOT IN TABLE" ) == true && diff_Table.getDeriv_OF( func.substring( 1 , func.length() - 1 ) ).equals( "NOT IN TABLE" ) == true )
   {
-   
-      
-      
-      System.out.println( "hfgljhfgkjhfhgidguirururuinderv" + func + "   " + deriv_func ) ;
-      return deriv_func ;   
-  
+       return deriv_func ;   
   }
   
   if( diff_Table.getDeriv_OF( func.substring( 1 , func.length() - 1 ) ).equals( "NOT IN TABLE" ) != true )
   {
-   System.out.println( "hfgljhfgkjhfhgidguirururuinderv" ) ;
    return diff_Table.getDeriv_OF( func.substring( 1 , func.length() - 1 ) ) ;   
-  
   }
   
-  System.out.println( "#################################################" + deriv_func ) ;
+
   return diff_Table.getDeriv_OF( func ) ;
 
 
 }
 
 
-
+/*
+ * This Method calls the correct special functions derivative function with the argument of that function
+ * being differentiated. 
+ * NOTE: YOU WANT TO ADD A CALL TO YOUR NEW SPECIAL FUNCTION DERIVATIVE METHOD THAT YOU DEFINED IN THE 
+ * ######DIFFERENTIAL CALCULUS SECTION ABOVE####### IN THIS METHOD TO ACTUALLY USES YOUR METHOD!!!!
+ */
 private static String diff_function( String func_name , String argument )
 {
-    
-   System.out.println( "In diff_function " ) ;
+
    if( func_name.equals( "Sin" ) == true )
    return sindiff( argument ) ;
     
@@ -1127,11 +1124,11 @@ private static String diff_function( String func_name , String argument )
    return sindiff( argument ) ;
    */
    
-   //This is where you add new function calls 
+   //THIS IS WHERE YOU ADD YOUR NEW DERIVATIVE FUNCTION CALLS 
    
    System.out.println( "ERRORRRRRRRRRRRRRRRR!!!!" ) ;
    System.out.println( "This error occured because function " + func_name + " does not exist" ) ;
-   
+   System.out.println( "Make sure you defined a function call for your " + func_name + " in method diff_function( String func_name , String argument ) " ) ;
    return null ;
 }
 
@@ -1140,12 +1137,16 @@ private static String diff_function( String func_name , String argument )
 
 
 
-
+/**
+ * This function get the operands for a given operator 
+ * @param func the function as a String to get the operands of
+ * @param operator_position int of the position in func where the operator is at
+ * @param operator_sign String representing the symbol of the operator sign. Currently there is only 5 math operators
+ * multiply = * , divide = / , add = + , subtract = - , raising to a power = ^
+ * @return A String array of size 2  , operand1 is in String[0] , operand2 is in String[1] OR NULL IF ERROR
+ */
 private static String[] getOperands( String func , int operator_position , String operator_sign )
 {
-    //System.out.println( "In getOperands " ) ;
- //parathesis and bracket i.e () and [] should have their own function for computing the
-    //next matching [ , ] , ( , ) .........
     
   String operands[] = new String[2] ;  
     
@@ -1388,7 +1389,12 @@ return operands ;
 }
 
 
-
+/**
+ * Simple function to determine if at a given index of String expr if it is the start of known special function
+ * @param index 
+ * @param expr
+ * @return returns true if the index of the expr String  is the beginning of a known special function, false otherwise
+ */
 private static boolean isStartOf_SpecialFunction( int index , String expr )
 {
     
@@ -1409,7 +1415,14 @@ private static boolean isStartOf_SpecialFunction( int index , String expr )
 
 
 
-
+/**
+ * This function gets the matching bracket for example (x+6)+(x^3+7)  if your on (x+6 then it would get you x+6) end
+ * @param operator_to_match  is either ( ) or a [ ] 
+ * @param start_position  integer of the starting position to begin the search
+ * @param direction the direction to go in for the search
+ * @param function the actually string to search in 
+ * @return integer of the position of the matching symbol ()[]
+ */
 private static int getMatching( String operator_to_match , int start_position , String direction , String function ) 
 {
     //Think about changeing this function to the same function but only two parameters the int start_position ,String function
@@ -1556,27 +1569,13 @@ private static int getMatching( String operator_to_match , int start_position , 
 
 private static String isKNOWN_diff( String func ) 
 {
-    System.out.println( "In  isKNOWN_diff " ) ;
    // String func = expr.trim() ; // don't think I need to trim 99.9999999999999999...% sure of that :)
     
     String derivative = diff_Table.getDeriv_OF( func ) ;
     
     if( derivative.equals( "NOT IN TABLE" ) != true )
     return derivative ;
-   //need to erase!!! /////////////////////////////
-    //derivative = diff_Table.getDeriv_OF( func.substring( 1 , func.length() ) ) ; 
-    
-    //if( derivative.equals( "NOT IN TABLE" ) != true )
-    //return derivative ;
-    
-    
-    //derivative = diff_Table.getDeriv_OF( "(" + func + ")" ) ;
-    
-    //if( derivative.equals( "NOT IN TABLE" ) != true )
-    //return derivative ;
-    
-    
-  ////////////////////////////////////////  
+
     if( isConstantExpression( func ) == true ) // May need to change back to isConstant dont think so though!
     return "0" ;
     
@@ -1598,13 +1597,13 @@ private static String isKNOWN_diff( String func )
        i++ ; 
         
     }
-    System.out.println( "iiiiiiiiiiiiiiiiiiiiiiiii " + i ) ;
+
     if( i == basic_functions.length )
     {
 
         //Here is where you check the diff array for a given functions derivative!!!
        // if not found return "NO" else return the derivative!!!        
-        //New Comment is that the above to lines are not true because the else can be not elementary
+        //New Comment is that the above two lines are not true because the else can be not elementary
         //but the Table could contain it !!!!
         //System.out.println( "Not an elementary exp , trig , log , hypertrigfunc , inver trig , or any other basic transcendental function " ) ;    
         //System.out.println( "Also is Not a constant and  not a primitive varible" ) ;
@@ -1641,8 +1640,21 @@ private static String isKNOWN_diff( String func )
       
       String arg = func.substring( func.indexOf( "[" ) + 1, index_bracket ) ; 
       
+      
+      /**
+       * This is the basic derivatives for the 
+       * private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth" , "Csch" ,
+	     "Sin" , "Cos" , "Tan" , "Sec" , "Cot" , "Csc" , "ArcSinh" , "ArcCosh" , "ArcTanh" , "ArcSech" ,
+	     "ArcCoth" , "ArcCsch" , "ArcSin" , "ArcCos" , "ArcTan" , "ArcSec" , "ArcCot" , "ArcCsc" , 
+	     "Exp" , "Ln" , "Log" .... ADD YOUR NEW SPECIAL FUNCTION TO THE FUNCTION ARRAY AT TOP OF THIS CLASS } ; 
+
+         Then add on to the switch statement below your new special function derivatives for the primitive case
+         IMPORTANT NOTE IS POSITION IN THE FUNCTION ARRAY DETERMINES THE POSITION YOU NEED TO ADD AT THE SWITCH
+         STATEMENT FOR THE NEW SPECIAL FUNCTION
+
+       */
       switch( i )
-      {
+      {    //******************************************* Hyperbolic function start here 
           case 0: 
               if( isPrimitiveArgument( arg ) == true )
               return "Cosh[" + var + "]" ; 
@@ -1681,7 +1693,7 @@ private static String isKNOWN_diff( String func )
               return "-1*Csch[" + var + "]*" + "Coth[" + var + "]" ; 
               else
               return "NO" ;
-           //******************************************* Trig function start here  
+           //******************************************* Trigonometric function start here  
           case 6: 
               if( isPrimitiveArgument( arg ) == true )
               return "Cos[" + var + "]" ; 
@@ -1726,85 +1738,84 @@ private static String isKNOWN_diff( String func )
               return "NO" ;
               
               
-        //Arctrig and hyper  and archyper    
+        //************************Invese Hyperbolic functions start here  
            case 12: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(" + var + "^2 + 1 )^(1/2)" ; 
               else
               return "NO" ;
               
            case 13: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(" + var + "^2 - 1 )^(1/2)" ;  
               else
               return "NO" ;
               
            case 14: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(1-" + var + "^2 )" ; 
               else
               return "NO" ;
               
            case 15: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "-1/("+var+"*(1-" + var + "^2)^(1/2))" ; 
               else
               return "NO" ;
               
            case 16: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return  "1/(1-" + var + "^2 )" ;
               else
               return "NO" ;
               
            case 17: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "-1/("+var+"*(1+" + var + "^2)^(1/2))" ;
               else
               return "NO" ;
-              
+              //******************Inverse Trig functions start here
            case 18: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(1-" + var + "^2)^(1/2)" ; 
               else
               return "NO" ;
               
            case 19: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "-1/(1-" + var + "^2)^(1/2)" ; 
               else
               return "NO" ;
               
               
            case 20: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(1+" + var + "^2)" ; 
               else
               return "NO" ;
               
               
            case 21: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "1/(" +var+"*(" + var + "^2 - 1)^(1/2))" ;
               else
               return "NO" ;
               
               
            case 22: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "-1/(1+" + var + "^2)" ;  
               else
               return "NO" ;
               
               
            case 23: 
               if( isPrimitiveArgument( arg ) == true )
-              return "Cos[" + var + "]" ; 
+              return "-1/(" +var+"*(" + var + "^2 - 1)^(1/2))" ; 
               else
               return "NO" ;
               
-              //End of arc trig hyper ... 
-             //begining of exp log ... 
+         //****************** exp , ln , log functions start here
           case 24: 
               if( isPrimitiveArgument( arg ) == true )
               return "Exp[" + var + "]" ; 
@@ -1824,7 +1835,8 @@ private static String isKNOWN_diff( String func )
               return "1/" + var  ; 
               else
               return "NO" ;
-      
+              //Here is where you would add code to check for user defined functions!!!
+              //Or special functions like gamma beta zeta and so on ....
           default:
               System.out.println( "Error Occured varible i is not correct in code " ) ;
               System.out.println( "Probably someone tampered with the switch statment incorrectly when trying to modify" ) ;
@@ -1833,14 +1845,21 @@ private static String isKNOWN_diff( String func )
     }
    
     
-    //Here is where you would add code to check for user defined functions!!!
-    //Or special functions like gamma beta zeta and ....on and on ...
+    //If you got here that means its not a primitive function of the String function[] array table
+    //So at this point is either a complex function that need to be processed more 
+    //Or an invalid function
     return "NO" ;
     
        
 }
 
 
+/**
+ * A Internal function to count ( and ) characters in a certain way used in diff(...) and isKNOWN_diff(...)  functions
+ * @param expr
+ * @param startpos
+ * @return
+ */
 private static int skipPar( String expr , int startpos )
 {
     
@@ -1865,7 +1884,12 @@ private static int skipPar( String expr , int startpos )
 
 
 
-
+/**
+ * This function is used to determine if the expression entered is a constant expression
+ * All constant expressions have derivatives equal to zero
+ * @param expr is the expression to test as a String
+ * @return true if expr is constant expression , false otherwise
+ */
 private static boolean isConstantExpression( String expr )
 {
  
@@ -1910,7 +1934,11 @@ private static boolean isConstantExpression( String expr )
 
 
 
-
+/**
+ * A Simple function to determine if the expr is an constant/number
+ * @param expr
+ * @return true if its a constant , false otherwise 
+ */
 private static boolean isConstant( String expr )
 {
    
@@ -1925,7 +1953,13 @@ private static boolean isConstant( String expr )
     
 }
 
-
+/**
+ * This function is to test that the expr is just the variable, main variable.
+ * Its used for the recursive part of the program mostly to terminate the chain rule
+ * Very important but easy to understand!!!
+ * @param expr A expression as a String
+ * @return true if expr is the variable your differentiating with respect , false if the expression is more then just the variable
+ */
 private static boolean isPrimitiveVarible( String expr ) 
 {
     
@@ -1934,12 +1968,15 @@ private static boolean isPrimitiveVarible( String expr )
     
 }
 
-//Need to make this alot better not sure if full correct and optimal yet
+/**
+ * The workhorse of isPrimitiveVarible(...) 
+ * @param arg the String expr
+ * @return true if the arg is a primitive argument , false otherwise important for termination of chain rule
+ * in recursive calls.
+ */
 private static boolean isPrimitiveArgument( String arg )
 {
-    
-  //arg = arg.trim() ; 
-  
+ 
   if( arg.equals( var ) == true )
   return true ;
     
@@ -1952,38 +1989,16 @@ private static boolean isPrimitiveArgument( String arg )
   
   return false ;
   
- /*
-  
- StringTokenizer st1 = new StringTokenizer( arg , var );
- StringTokenizer st2 = new StringTokenizer( arg , "^" );
- StringTokenizer st3 = new StringTokenizer( arg , "[" );
- StringTokenizer st4 = new StringTokenizer( arg , "]" );
- StringTokenizer st = new StringTokenizer( arg );
- StringTokenizer st5 = new StringTokenizer( arg , "*" );
- StringTokenizer st6 = new StringTokenizer( arg , "/" );
- StringTokenizer st7 = new StringTokenizer( arg , "+" );
- StringTokenizer st8 = new StringTokenizer( arg , "-" );
- 
- System.out.println( arg + " sddf f " + st1.countTokens() ) ;
- if( st1.countTokens() > 2 )
-     return false ;
-
- 
- if( st2.countTokens() > 1 || st3.countTokens() > 1 || st4.countTokens() > 1 || st5.countTokens() > 1)
-     return false ;
- 
- if( st6.countTokens() > 1 || st7.countTokens() > 1 || st8.countTokens() > 1 )
- return false ;
- 
- if( st1.countTokens() != 0 ) //|| st1.countTokens() != 1 )
-     return false ;
- 
- return true ; 
- 
-*/
 }
 
-
+/**
+ * This function is used to determine if the expression is of the form (x) , ((x)) , (x  ) 
+ * else if its not that means its not a primitive expression. Used as a helper method for the functions
+ * isPrimitiveArgument(...) and isPrimitiveVarible(...) and all 3 of these methods are important for the chain rule recursion
+ * to terminate
+ * @param arg A String that an expression to test if just the () are around and still qualify as primitive function
+ * @return true if only "( primitive expression )" false other wise.
+ */
 private static boolean justParInExpression( String arg )
 {
  
@@ -2004,7 +2019,12 @@ return true ;
 }
 
 
-
+/**
+ * An internal Hashtable to store previous computed derivatives for fast lookup
+ * Of previous computed derivative calculations when computing complex derivatives of function
+ * Very important to the recursive nature of the calculations of derivatives 
+ *
+ */
 private static class DiffTable {
 
 private Hashtable d_table ;
@@ -2078,114 +2098,8 @@ public String toString()
 
 }
 
-/*
-
-private static class BasicSimplifer {
-    
-    
-public boolean isPolynomialExpression( String expr )
-{
-    
- return true ;   
-}
-    
-  
-public String polySimplify( String poly )
-{
-    
-  int i = 0 ;  
-  while( i < poly.length() )
-  {
-   
-      if( poly.charAt( i ) == '
-         
-      
-  }
-    
-       
-    
-    
-}
-
-
-public static String SimplifyExpression( String expr )
-{
-   
-  String operands[] = new String[2] ; 
-  Sin[x]+7/(Sin[x]+7)^7  
-  int i = 0 ;  
-  while( i < expr.length() )
-  {
-   if( expr.charAt(i) == '*' )
-   {
-       
-    getOperands( expr , i , "*" ) ;     
-       
-   }
-    
-   if( expr.charAt(i) == '/' )
-   {
-       
-    operands = getOperands( expr , i , "/" ) ;     
-    
-    if( hasNoPowerSymbol(operands[1]) == true )
-    {
-     
-     if( hasParAround( operands[1] ) == true )
-     {
-         
-       trimPar( operands[1] )  
-         
-         
-     }
-        
-        
-    }
-    
-    
-   }
-   
-   if( expr.charAt(i) == '+' )
-   {
-       
-    getOperands( expr , i , "*" ) ;     
-       
-   }
-   
-   
-   if( expr.charAt(i) == '-' )
-   {
-       
-    getOperands( expr , i , "*" ) ;     
-       
-   }
-   
-  }
-  
-  
-  
-  return "jkfjf" ;
-    
-    
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-*/
-
+//Just a simple test main program for this class
+//Used only for debugging purposes 
 public static void main( String args[] )
 {
 
@@ -2254,27 +2168,6 @@ System.out.println( diff( "Log[Log[x^2]]" ) );
      System.out.println( "Error Occur while reading text! " ) ;   
     }
     
-    
-    
-/*    
-int j =0 ;
-funct = "x^200" ;
-String diff_s = diff( "x^200" ) ;
-funct = diff_s ; 
-
-while( j < 10 )
-{
- diff_s = diff( diff_s ) ; 
- funct = diff_s ;
- j++ ;  
- 
- 
- System.out.println( "\n"+ j + " derivitive is "  + diff_s ) ;  
-    
-}
-*/
-System.out.println( "abcdefg varible is " + abcdefg ) ;
-//System.out.println( diff( diff( "x^100+77*x^77+Sinh[x]+t^7" ) ) ) ;
 
 System.exit(0) ;
 

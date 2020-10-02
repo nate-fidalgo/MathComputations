@@ -39,14 +39,13 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
               return "1/" + var  ; 
               else
               return "NO" ;
-              //HERE IS WHERE YOU WOULD ADD YOUR DERIVATIVE FOR YOUR NEW SPECIAL FUNCTION!!!
-              //Or special functions like gamma beta zeta and so on ....
-          default:
+              //HERE IS WHERE YOU WOULD ADD YOUR DERIVATIVE FOR YOUR NEW SPECIAL FUNCTION, JUST CREATE A CASE 27: AND SO ON!! 
+           default:
           
 ...
 
-//then one last step is create a function to take care of your new special function derivative when has a complex argument by adding a function call for it
-//in private static String diff_function( String func_name , String argument ) in the code go there and it should look like this
+//then one last step is create a function to take care of your new special function derivative when it has a complex argument by adding a function call for it
+//Go to private static String diff_function( String func_name , String argument ) in the code 
    ...
    if( func_name.equals( "Sin" ) == true )
    return sindiff( argument ) ;
@@ -82,6 +81,9 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
 //All that need to be done now is make sure you create your private static String Sndiff( argument ) function 
 //And your done congradulation you just add a new special function to my symbolic differentiation programs capabilities in this example Sn
 //Would Probably Stand for elliptical function Sn.
+//The reason why you need to create a method and not just add a case statement is the case statement only takes care of primitive arguments for example
+//Sin[x] the case statement would give back Cos[x] however if one want to differentiate Sin[x^2+1] then it have to uses a chain rule.
+//And your Sndiff( argument ) function is the equivalent of differentiating for chain rule when the argument is not primitive!
 
 </code>
 </pre>

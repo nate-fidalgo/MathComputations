@@ -28,7 +28,7 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
 } ; 
 
 //GO TO THE isKNOWN_diff function in the code also and add your new functions derivative there 
-//...
+
            case 25: //this was for Ln derivative which you all know is 1/var
               if( isPrimitiveArgument( arg ) == true )
               return "1/" + var  ; 
@@ -43,7 +43,7 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
               //HERE IS WHERE YOU WOULD ADD YOUR DERIVATIVE FOR YOUR NEW SPECIAL FUNCTION, JUST CREATE A CASE 27: AND SO ON!! 
            default:
           
-//...
+
 
 //then one last step is create a function to take care of your new special function derivative when it has a complex argument by adding a function call for it
 //Go to private static String diff_function( String func_name , String argument ) in the code 

@@ -9,7 +9,8 @@ I am trying to see by this if the podcast audio files are easier to comprehend t
  <a href="https://github.com/nate-fidalgo/MathComputations/blob/master/SymbolicDifferentiation/ListenDIFF">ListenDIFF mp3</a> 
  
 <br>
-
+If you want to add your own custom special functions to differentiate  do the following in code
+<br>
 <pre>
 <code>
 //Currently these function are support to differentiate or will be fairly soon  !!!
@@ -84,6 +85,25 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
 //The reason why you need to create a method and not just add a case statement is the case statement only takes care of primitive arguments for example
 //Sin[x] the case statement would give back Cos[x] however if one want to differentiate Sin[x^2+1] then it have to uses a chain rule.
 //And your Sndiff( argument ) function is the equivalent of differentiating for chain rule when the argument is not primitive!
+
+</code>
+</pre>
+
+<br>
+Most of the time you probably not be adding new special functions to be differentiated you probably just be using my program to differentiate the standardly used functions. I.E trig , hyperbolic , there inverses , exp , ln , log ,polynomial , or rational functions.
+<br>
+
+<pre>
+<code>
+//For that you just call diff( "Sin[x^(1/2)-x^2]" ) ; // diff( String func ) the func is the function to differentiate returns a String representation back
+//Which you then can just print it to the screen like this     System.out.println( diff( "Sin[x^(1/2)-x^2]" ) ) ; or dump it to a file or whatever you want.
+//NOTE I FIGURED OUT HOW TO PROVIDE SIMPLIFICATION IN A REASONABLE MANNER BUT ITS NOT IMPLEMENTED YET SO MOST EXPRESSIONS WILL BE NOT IN SIMPLIFIED FOR
+//ALSO THE FORMAT OF THE OUTPUT IS NOT IN LATEX/TEX EVENTUALLY I MAY CREATE A TRANSLATOR PROGRAM TO CONVERT THE OUTPUT FORMAT INTO TEXT SO YOU CAN GENERATE THE 
+//MATH LATEX NICE FORMAT FOR THE DERIVATIVES OR EVEN FROM THERE MAKE GIF OR IMAGE FILES OF THE LATEX TO POST ON MATH SITES
+//THE DEFAULT VARIABLE THAT YOU DIFFERENTIATE WITH RESPECTS TO IS x found here in code 
+private static String var = "x" ; // if you want a different variable change it var = "w" , or whatever and then you can  have Sin[w^(1/2)-w^2] instead of Sin[x^(1/2)-x^2] in your diff. Only restriction currently is keep the variable one character so any of the 26 letter would be fine
+
+//To me 26 letters is enough for choice however eventually all make it unlimited but most calculus students until they reach multivariable levels will only need single variables
 
 </code>
 </pre>

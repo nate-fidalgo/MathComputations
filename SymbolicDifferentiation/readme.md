@@ -9,6 +9,7 @@ I am trying to see by this if the podcast audio files are easier to comprehend t
  <a href="https://github.com/nate-fidalgo/MathComputations/blob/master/SymbolicDifferentiation/ListenDIFF">ListenDIFF mp3</a> 
  
 <br>
+
 <pre>
 <code>
 //Currently these function are support to differentiate or will be fairly soon  !!!
@@ -19,7 +20,6 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
 } ; 
 
 //In the code you can add your own special function like bessel , hypergeometric function , elliptical ,...etc by doing this
-//Currently these function are support to differentiate or will be fairly soon  !!!
 private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth" , "Csch" ,
 "Sin" , "Cos" , "Tan" , "Sec" , "Cot" , "Csc" , "ArcSinh" , "ArcCosh" , 
 "ArcTanh" , "ArcSech" , "ArcCoth" , "ArcCsch" , "ArcSin" , "ArcCos" , "ArcTan" , "ArcSec" ,
@@ -34,7 +34,6 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
               else
               return "NO" ;
               
-              
            case 26: 
               if( isPrimitiveArgument( arg ) == true )
               return "1/" + var  ; 
@@ -44,7 +43,7 @@ private static String function[] = {  "Sinh" , "Cosh" , "Tanh" , "Sech" , "Coth"
               //Or special functions like gamma beta zeta and so on ....
           default:
           
-....
+...
 
 //then one last step is create a function to take care of your new special function derivative when has a complex argument by adding a function call for it
 //in private static String diff_function( String func_name , String argument ) in the code go there and it should look like this

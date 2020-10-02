@@ -107,3 +107,16 @@ private static String var = "x" ; // if you want a different variable change it 
 
 </code>
 </pre>
+
+<br>
+Since this was written in java it also will compile for android mobile phones as well the class only uses import statements 
+<br>
+<pre>
+<code>
+import java.util.* ; 
+import java.io.* ; //mostly just for the small test debugging main function which can be stripped out so not really need only for testing
+</code>
+</pre>
+This 2 import statements have been available from the beginning of when java was created aka version 1.1 or 1.2 so any java VM should run this code old or new.
+As well as any java based device or device that can run a java VM so very portable.
+

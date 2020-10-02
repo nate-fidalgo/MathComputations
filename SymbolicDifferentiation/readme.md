@@ -118,5 +118,5 @@ import java.io.* ; //mostly just for the small test debugging main function whic
 </code>
 </pre>
 This 2 import statements have been available from the beginning of when java was created aka version 1.1 or 1.2 so any java VM should run this code old or new.
-As well as any java based device or device that can run a java VM so very portable.
+As well as any java based device or device that can run a java VM so very portable. (Any android phone shouldnt have any problem no matter how old or new )
 

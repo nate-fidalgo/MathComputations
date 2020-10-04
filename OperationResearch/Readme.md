@@ -12,4 +12,9 @@ Its a subject that is a cross between computer science and math but is more a fo
 I know thats changing now and becoming more universal but much is not taught in standard math circulums yet 
 <br>
 check back later under construction
+<br>
+Dont be confused with all the terms operational research = optimization theory , subtopics like queue theory , optimal control theory/control theory , decision theory , linear programming , integer programming , nonlinear programming  all belong to the title operations research
+
+<br>
+Later guys :)
 

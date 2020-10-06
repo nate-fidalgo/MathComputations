@@ -6,8 +6,8 @@ There is extra tabs that you can add stuff to and customize as you like.
 
 Screen shots of what it looks like 
 <br>
- <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="800"> 
+ <img src="BusinessBICON.png" alt="Business Basic BI" width="500" height="800"> 
 <br>
- <img src="CompoundInterest.png" alt="Girl in a jacket" width="500" height="800"> 
+ <img src="CompoundInterest.png" alt="Compound Interest Calculator Pix" width="500" height="800"> 
  <br>
- <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="800"> 
+ <img src="MortgageCalc.png" alt="Mortgage Calculator Picture" width="500" height="800"> 

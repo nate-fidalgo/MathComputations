@@ -5,4 +5,9 @@ There is extra tabs that you can add stuff to and customize as you like.
 <pre>
 
 Screen shots of what it looks like 
- <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="600"> 
+<br>
+ <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="800"> 
+<br>
+ <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="800"> 
+ <br>
+ <img src="BusinessBICON.png" alt="Girl in a jacket" width="500" height="800"> 

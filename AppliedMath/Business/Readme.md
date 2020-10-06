@@ -24,4 +24,4 @@ There is extra tabs that you can add stuff to and customize as you like.
  <br>
  Android is a cool opensource embedded operating system runs on many different ARM devices. Maybe someday you will be an electronic engineer programming firmware of a electronic device. Android , Raspberry PI and Audrino Studios all stuff you should familarize with if you think your going the electronic engineering route!
 <br>
- Maybe your not into the electronic engineering side of things thats fine you will find alot of use studying the computation math for mortgages and compound interest. Maybe some day you will be the next CPA certified accountant , Financial planner , Actuarialist or Economist people go to. </b>
+ Maybe your not into the electronic engineering side of things thats fine you will find alot of use studying the computation math for mortgages and compound interest. Maybe some day you will be the next CPA certified accountant , Financial planner , Actuarialist or Economist people go to for there solutions. </b>

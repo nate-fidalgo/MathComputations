@@ -1,5 +1,5 @@
 This code is to compute b-smooth numbers and factor bases. Use 
-
+<pre>
 <code>
   
   ...
@@ -13,3 +13,4 @@ This code is to compute b-smooth numbers and factor bases. Use
 	}
   ...
 </code>
+</pre>

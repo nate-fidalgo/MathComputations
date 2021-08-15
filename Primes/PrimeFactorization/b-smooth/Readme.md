@@ -26,4 +26,5 @@ B-SMOOTH true
 </code>
 <br>
 One can see you can test any number for being B-smooth or run thru a list of numbers/canidates for being B-smooth.
-Generate a B-smooth lookup table for fast factoring ...etc
+Generate a B-smooth lookup table for fast factoring ...etc. Possibilities are numerous.
+

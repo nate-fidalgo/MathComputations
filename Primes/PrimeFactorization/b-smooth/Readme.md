@@ -1,4 +1,5 @@
-This code is to compute b-smooth numbers and factor bases. Use 
+This code is to compute b-smooth numbers and factor bases. 
+<br> Example below of code. Class use are just P class and FactorBases so copy, them compile them, and use to your liking
 <pre>
 <code>
   

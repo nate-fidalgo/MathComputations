@@ -1,7 +1,8 @@
 A place for prime algorithms 
 Work in progress !!!
 
-First few lucas lehmer numbers 
+First few Fermat Numbers for 
+
 3
 
 5

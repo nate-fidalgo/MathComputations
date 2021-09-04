@@ -1,7 +1,7 @@
 A place for prime algorithms 
 Work in progress !!!
 
-First few Fermat Numbers for 
+First few Fermat Numbers just for the fun of it
 
 3
 

@@ -5,7 +5,7 @@ Cipolla, Pocklington's, Tonelli–Shanks to name a few for computing x in the eq
 
 Most algorithms known focused on the quadratic reciprocity problem aka what i call the discrete square root problem.
 
-But i am here to eventually take it to the next level and do cubic , biquadratic , and more generally try and tackle the more general discrete nth roots problem.
+But i am here to eventually take it to the next level and do cubic , biquadratic , and more generally try and tackle the more general discrete nth roots problem. x^n = a mod p where n = 2 , 3 , 4 are special cases
 
 Work in progress!
 

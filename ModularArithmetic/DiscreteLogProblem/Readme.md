@@ -3,8 +3,9 @@
 The discrete log problem is a tough problem very intractable but we must try to forge ahead.
 <pre>  
 <code>
-java DiscreteLog
 Example:
+java DiscreteLog
+
 Solving a^x = b (mod n)
 Enter a value = 7
 Enter b value = 13

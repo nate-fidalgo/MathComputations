@@ -1,10 +1,10 @@
 This is a neat continued fraction expansion displayer
 <br>
-cool
+Sample output of  ContinuedFractions.java 
 
-<code>
+
 <pre>
-
+<code>
 
 Input a number: type q (quit)
 141

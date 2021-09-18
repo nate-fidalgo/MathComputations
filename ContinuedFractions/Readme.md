@@ -2,7 +2,7 @@ This is a neat continued fraction expansion displayer
 <br>
 Sample output of  ContinuedFractions.java 
 <br>
-Computes the continued fraction expansion for <span>&#8730; r</span>
+Computes the continued fraction expansion for <span>&#8730;r</span>
 
 <pre>
 <code>

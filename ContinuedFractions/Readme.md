@@ -1,7 +1,8 @@
 This is a neat continued fraction expansion displayer
 <br>
 Sample output of  ContinuedFractions.java 
-<span>&#8730;</span>
+<br>
+Computes the continued fraction expansion for <span>&#8730; r</span>
 
 <pre>
 <code>

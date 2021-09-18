@@ -3,7 +3,7 @@ This is a neat continued fraction expansion displayer
 Sample output of  ContinuedFractions.java 
 <br>
 Computes the continued fraction expansion for <span>&#8730;r</span>
-
+\sqrt{123}
 <pre>
 <code>
 

@@ -50,7 +50,7 @@ public class ContinuedFractions {
 			
 		}
 		
-		cexpansion[++i] = 2*a0 ;
+		cexpansion[i] = 2*a0 ;
 		
 		//shortening the array size
 		//just to save space
@@ -81,11 +81,12 @@ public class ContinuedFractions {
 		}
 		catch(RuntimeException ex)
 		{
+			System.out.println("goodbye!") ;
 			System.exit(0) ;
 		}
 		long output[] = cf.computeExpansion( r ) ;
 		
-		System.out.println("ContinuedFraction expansion for " + r );
+		System.out.println("ContinuedFraction expansion for sqrt of " + r );
 		System.out.print( "[ ") ;
 		
 		for( int i = 0 ; i < output.length ; i++ )

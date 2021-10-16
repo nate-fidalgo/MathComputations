@@ -19,7 +19,7 @@ Should display the 20th bernoulli number... i will fix the speed and allow one t
 Optimization of it is coming bare with me. And the more important features will be the ability to export your database so
 others can compute the next bernoulli numbers where you left off.
 
-Its all about making computing pascals triangle /combinations quick and look up databases... though i hold off because i think 
+Its all about making computing pascals triangle /combinations quick and lookup databases for previous bernoulli numbers... though i hold off because i think 
 Srinivasa Ramanujan identities allow for the most efficient implementation to date so i might go with that instead.
 
 </code>

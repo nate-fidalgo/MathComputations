@@ -24,3 +24,10 @@ Srinivasa Ramanujan identities allow for the most efficient implementation to da
 
 </code>
 </pre>
+<br>
+Not only does bernoulli numbers play a connection in infinite summation linking to integration but it also has a link to computing exact formulas
+for finite sums of the form n^k. As well as the famous zeta function even values that we all know and love.
+
+<br>
+At any extent if your not into bernoulli numbers then you should be at least into the zeta function and being able to compute bernoulli numbers.
+Gives you a way to compute the next even zeta function values as well :)

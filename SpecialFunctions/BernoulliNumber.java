@@ -85,7 +85,7 @@ public class BernoulliNumber {
 		// TODO Auto-generated method stub
 
 		BernoulliNumber bnum = new BernoulliNumber() ;
-		BigInteger i = new BigInteger( "100" ) ;
+		BigInteger i = new BigInteger( "20" ) ;
 		
 		System.out.println("The " + i + "th BernoulliNumber = " +  bnum. BernoulliNum( i ) ) ;
 		

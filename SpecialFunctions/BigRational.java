@@ -108,11 +108,21 @@ public class BigRational {
 	
 	public String toString()
 	{
-		if( sign == 1 )
+		if( sign == 1 && this.getDen().compareTo(BigInteger.ONE) != 0 )
 		return this.getNum() + " / " + this.getDen() ; 
-		else
+		else if( sign == -1 &&  this.getDen().compareTo(BigInteger.ONE) != 0 )
 		return "-" + this.getNum() + " / " + this.getDen() ;
+		else
+		if( sign == 1 && this.getDen().compareTo(BigInteger.ONE) == 0 )
+		{
+			return  this.getNum().toString() ;
+		}
+		else if( sign == -1 &&  this.getDen().compareTo(BigInteger.ONE) == 0 )
+		{
+			return "-" + this.getNum().toString() ;
+		}
 		
+			return null ;
 	}
 	
 	//This is a debugging main dont use just import this class and use in your main!!!

@@ -33,7 +33,7 @@ At any extent if your not into bernoulli numbers then you should be at least int
 Gives you a way to compute the next even zeta function values as well :)
 
 
-The first 1000ish bernoulli numbers
+The first 1000ish bernoulli numbers just for display i think the next world record will be Bn where n=10^8 but maybe somebody has computed passed 10^8 for bernoulli numbers. I am currently getting around 10^6 in a day but much improvements can be made still that i am factoring in.
 
 <pre>
 <code>

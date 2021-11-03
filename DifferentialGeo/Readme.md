@@ -9,7 +9,7 @@ This folder will be for computational differential geometry quantities such as t
 </pre>
 
 <br>
-Generalization of curvature pass dimensions 3 is challenging and mostly not well defined as a one type of curvature thing.<br>
+Generalization of curvature passed dimensions 3 is challenging and mostly not well defined as a one type of curvature thing.<br>
 Usually generalizing curvature to any dimension requires selecting specific desired quanties from the regular 2d / 3d standard curvature definitions.
 <br> 
 Which could be thru connections /parrellel transport properties or other types of curvature properties means , gaussian , normal sections ,...etc

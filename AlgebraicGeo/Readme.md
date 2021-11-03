@@ -14,3 +14,7 @@ The obvious standard computation stuff in this folder would be
 </code>
 </pre>
 
+<br>
+You can think of algebraic geometry as a generalization of linear algebra but to systems of polynomial equations of several variables to some extent.
+<br>
+And it is pretty neat that mathematicians found grobner bases and an elimination theory similar to gaussian elimination that we use for linear system solving.  

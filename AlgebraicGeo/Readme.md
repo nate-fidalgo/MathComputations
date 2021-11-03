@@ -19,3 +19,7 @@ You can think of algebraic geometry as a generalization of linear algebra but to
 <br>
 And it is pretty neat that mathematicians found grobner bases and an elimination theory similar to gaussian elimination that we use for linear system solving.  
 <br>
+The only problem is we are limited based on galois theory if we get polynomials of deg 5 > we can only approximate solutions still :(
+<br>
+Which would require numerical analysis like newtons root applied to systems of polynomial equations using jacobians. 
+<br> Ok i am rambling think you get the topics going in here. 

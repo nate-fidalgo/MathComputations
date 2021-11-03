@@ -12,7 +12,7 @@ This folder will be for computational differential geometry quantities such as t
 Generalization of curvature passed dimensions 3 is challenging and mostly not well defined as a one type of curvature thing.<br>
 Usually generalizing curvature to any dimension requires selecting specific desired quanties from the regular 2d / 3d standard curvature definitions.
 <br> 
-Which could be thru connections /parrellel transport properties or other types of curvature properties means , gaussian , normal sections ,...etc
+Which could be thru connections /parrellel transport properties or other types of curvature properties means , gaussian , normal sections curvature,...etc
 <br>
 Computational functions for Generalize curvature to any dimension is a slipper slope but if lucky all pull off coding a few major types of curvature for any dimenison.
 <br> 

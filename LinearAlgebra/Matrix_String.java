@@ -1,5 +1,4 @@
 
-
 /**
 
 This Matrix_String class is for doing symbolic matrix computations you can uses it to solve matrix of rational numbers in symbolic nice pretty form.
@@ -19,12 +18,27 @@ public class Matrix_String {
 @params String matrix[][] a matrix of rational numbers as Strings 
 @return the result the matrix simplied using gaussElimination the algorithm is time complexity O(n^3) 
 */
+
+private static int isevenswap = 0 ;
+
+//helper function for computing the determinant of a square matrix
+//which keeps track of the amount of row swaps which will change the determinant D from D to -D
+//based on the even or odd amount of row swaps.
+public static boolean SwapCountEven()
+{
+	if( isevenswap % 2 == 0 )
+		return true ;
+	
+	return false ;
+	
+}
+	
 public static String[][] gaussElimination( String matrix[][] )
 {
     
     int max_row_element_index = 1 ;
     boolean need_to_swap_row = false ;
-    
+    isevenswap = 0 ;
     
     for( int i = 0 ; i < matrix[0].length ; i++ )
     {
@@ -44,7 +58,7 @@ public static String[][] gaussElimination( String matrix[][] )
                 
         if( need_to_swap_row == true )
         {
-            
+        	isevenswap++ ;
             String holdrow[] = new String[ matrix[0].length ] ;
             for( int p = 0 ; p < matrix[0].length ; p++ )
             {
@@ -390,16 +404,126 @@ public static int gcd( int m , int n )
     return euclid_Alogrithm( m , n ) ;
 }
 
+
+//Compute the determinant from gaussian elimination O(n^3) runtime algorithm
+public static String determinant(String m[][])
+{
+	String d[][] = gaussElimination( m ) ;
+	String det = "1" ;
+	for( int i = 0 ; i < d.length ; i++ )
+	{
+		det = mult_fractions( d[i][i] , det ) ;
+	}
+	
+	if( SwapCountEven() == true )
+	return det ;
+	
+	return mult_fractions( "-1" , det ) ;
+	
+}
+
+
+/*
+ * This function computes the resultant of two polynomials a[] and b[]
+ * returns resultant number as a String associated to the polynomials
+ */
+public static String resultant(String a[] , String b[])
+{
+	int size = (a.length + b.length)-2 ;
+	String det[][] = new String[size][size] ;
+	
+	String detop[][] = new String[b.length -1][size] ;
+	String debot[][] = new String[a.length -1][size] ;
+	
+	for( int row = 0 ; row < size ; row++ )
+	{
+		if( row < b.length-1 )
+		shiftRow(detop, a , row ) ;
+		else
+		shiftRow(debot, b , row - (b.length - 1)) ;
+
+	}
+	
+
+	for( int i = 0 ; i < detop.length ; i++)
+	{
+		
+		for( int j = 0 ; j < detop[0].length ; j++ )
+		{
+			if( detop[i][j] != null )
+			det[i][j] = detop[i][j] ;
+			else
+			det[i][j] = "0" ;
+			
+		}
+
+	}
+	
+	
+	for( int i = 0 ; i < debot.length ; i++)
+	{
+		
+		for( int j = 0 ; j < debot[0].length ; j++ )
+		{
+			if( debot[i][j] != null )
+			det[detop.length+ i][j] = debot[i][j] ;
+			else
+			det[detop.length+ i][j] = "0" ;
+			
+		}
+
+	}
+	
+	
+	
+/*	
+	   for( int i = 0 ; i < det.length ; i++ )
+	   {
+	     System.out.println() ; 
+	     foar( int j = 0 ; j < det[0].length ; j++ )
+	        System.out.print( "\t" + det[i][j] ) ; 
+	   
+	   }
+*/	
+	return determinant(det);
+	
+
+}
+
+//Helper function to build the Sylvester matrix for computing the resultant
+public static void shiftRow( String m[][] , String a[] , int row) 
+{
+	
+	for( int i = 0 ; i < a.length ; i++)
+	{
+		if( row+i < m[0].length )
+		m[row][row+i] = a[i] ;
+	}
+		
+}
+
+
 //Test main to see if the function programs work and to resolve any bug issues in code
 //Dont uses Only for debugging the classes code create your Own Matrix_String object and call the gaussElimination(...) function to uses!
 public static void main( String args[] )
 {
 
    //String m[][] = { { "1" , "2" , "3" , "1" , "0" , "0" } , { "0" , "2" , "4" , "0" , "1" , "0" } , { "5" , "8" , "6/78" , "0" , "0" , "1" }  } ;
-   String m[][] = { { "9" , "35" , "4/3" , "70" } , { "4" , "3" , "4" , "8" } , { "1/5" , "1" , "1" , "3" }  } ;
+   //String m[][] = { { "9" , "35" , "4/3" , "70" } , { "4" , "3" , "4" , "8" } , { "1/5" , "1" , "1" , "3" }  } ;
+  // String m[][] = { {"1","-3","1","4","7"} ,{"2","-8","8","-2","7"} ,{"-6","3","-15","9","3"}    } ;
+  // String m[][] = { {"2","1","-1","8"} ,{"-3","-1","2","-11"} ,{"-2","1","2","-3"} } ;
+ //  String m[][] = { {"2","-1","0","1","0","0"} , {"-1","2","-1","0","1","0"} , {"0","-1","2","0","0","1"} } ;
+  // String m[][] = { { "3" , "4"  } , {"2","1" } } ;
+   //String m[][] = { { "2" , "1","1"  } , {"3","3","1" } , { "1","1","9"} } ;
+   String m[][] = { {"3","2","1","2"} ,{"1","2","3","3"} ,{"3","3","2","7"} , {"3","2","1","1"} } ;
+	
+   String a[] = { "1" , "2" , "3" } ;
+   String b[] = { "2" , "2" } ;
+   System.out.println( "resultant: " + resultant(a , b) );
    
+   System.out.println( "det : " + determinant(m) ) ;
    m = gaussElimination( m ) ;
-   
+   System.out.println(SwapCountEven());
    for( int i = 0 ; i < m.length ; i++ )
    {
      System.out.println() ; 

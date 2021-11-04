@@ -21,4 +21,5 @@ Someday not very soon though.
 Basically curvature can be defined in many different ways and based on many different properties so trying to code this is much more difficult then tensors or generalized cross products.
 <br>
 So bare with me its cool stuff.
-
+<br>
+Though ofcourse there is always the riemmann curvature tensor

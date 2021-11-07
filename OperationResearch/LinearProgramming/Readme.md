@@ -6,17 +6,6 @@ One should get this output after running the program.
 
 <pre>
 <code>
-2 1 1 1 0 0 240 
-1 3 2 0 1 0 360 
-2 1 2 0 0 1 300 
--6 -5 -4 0 0 0 0 
-</code>
-
-</pre>
-
-
-<pre>
-<code>
 The Simplex Method for LPs!!! 
 0 72 
 1 96 
@@ -29,4 +18,16 @@ The slack vars are at col indexes
 3 4 5 
 All other col indexs in tableau are non slack variables 
 </code>
+</pre>
+<br>
+The orginal problem has the tableau of this for the constraints and objective function
+<br>
+<pre>
+<code>
+2 1 1 1 0 0 240 
+1 3 2 0 1 0 360 
+2 1 2 0 0 1 300 
+-6 -5 -4 0 0 0 0 
+</code>
+
 </pre>

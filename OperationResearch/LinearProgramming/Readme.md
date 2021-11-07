@@ -34,7 +34,7 @@ The orginal problem has the tableau of this for the constraints and objective fu
 <br>
 <pre>
 <code>
-the objective function is z = 6x0+5x1+4x2
+the objective function is z = 6x0+5x1+4x2 to be maximized!
 subjected to the constraints
 2x0+x1+x2 <= 240
 x0+3x1+2x2 <= 360

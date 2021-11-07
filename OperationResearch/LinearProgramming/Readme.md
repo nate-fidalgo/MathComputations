@@ -39,6 +39,7 @@ subjected to the constraints
 2x0+x1+x2 <= 240
 x0+3x1+2x2 <= 360
 2x0+x1+2x2 <= 300
+x0,x1,x2 >= 0 
 </code>
 
 </pre>

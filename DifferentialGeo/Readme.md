@@ -2,7 +2,7 @@ This folder will be for computational differential geometry quantities such as t
 <pre>
 <code>
 1) tensor operations/calculations are easily represented by n dimensional arrays
-2) differential forms , wedge product/grassmannian  ...
+2) differential forms , wedge product/grassmannian  ... (div,grad,curl ,cross product and generalization of them to high dimensions)
 3) curvature and many more differential quantities /functions go here.
 4) manifold quantities such as dimension ,degree, bundle , invariants ...etc
 </code>

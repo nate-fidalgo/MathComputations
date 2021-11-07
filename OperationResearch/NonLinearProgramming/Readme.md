@@ -1,4 +1,4 @@
-This shall be the subfolder relating to optimization theory / OR related to things that cannt be solved thru linear programming.
+This shall be the subfolder relating to optimization theory / OR related to things that cannt be solved thru linear programming (or modeled linearly).
 <br>
 Somethings to come are
 <pre>

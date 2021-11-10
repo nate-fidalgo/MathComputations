@@ -177,6 +177,11 @@ public class BigRational {
 	}
 	
 	
+	public BigRational abs()
+	{
+		return new BigRational( getNum() , getDen() ) ;
+	}
+	
 	
 	//This is a debugging main dont use just import this class and use in your main!!!
 	public static void main(String[] args) {

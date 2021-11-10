@@ -46,6 +46,7 @@ x0,x1,x2 >= 0
 
 </pre>
 <br>
-More explaination to come because it kind of hard to know how to properly use this code. <br>
+More explaination to come because it kind of hard to know how to properly use this code. Without some examples on how to use my functions and how the algorithms for linear programming work! <br>
 A few performance improvement/revisions are being aftered in but other then this it solves the subject of linear programming problems completely
 <br>
+Probably a youtube video is to come on this wonderful subject.

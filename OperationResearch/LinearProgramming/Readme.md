@@ -45,3 +45,7 @@ x0,x1,x2 >= 0
 </code>
 
 </pre>
+<br>
+More explaination to come because it kind of hard to know how to properly use this code. <br>
+A few performance improvement/revisions are being aftered in but other then this it solves the subject of linear programming problems completely
+<br>

@@ -1,6 +1,8 @@
 
 The Simplex method is now implemented test output of a LP is given in the test main!
 <br>
+This code also implements the Dual Simplex algorithm so one can solve primal or dual problems whatever you want!
+<br>
 One should get this output after running the program.
 <br>
 

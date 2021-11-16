@@ -1,7 +1,7 @@
 
 Cool combinatorical topology or topological graph theory calculations for map coloring
 <br>
-If you run it you will see the first 50 solutions to the map coloring for surface of genus 0 thru 49
+If you run it you will see the first 50 solutions to the map coloring for surface of genus 0 thru 49 as well as the euler characteristic associated to the genus
 <br>
 <pre>
 <code>
@@ -108,3 +108,6 @@ Number of colors need to color this surface with genus 49 27
 
 </code>
 </pre>
+
+<br>
+Just i neat simple application far much easier then implementing the proof of the 4 color theorem :)

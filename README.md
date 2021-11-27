@@ -6,7 +6,7 @@ Check some of them out
 <pre>
 <code>
 Partitions program 
-Symbolic differentations // still to come
+Symbolic differentations 
 Symbolic integrations/rish algorithm // maybe
 Summation and series // later
 cool sequences  // later

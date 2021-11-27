@@ -111,3 +111,6 @@ Number of colors need to color this surface with genus 49 27
 
 <br>
 Just i neat simple application far much easier then implementing the proof of the 4 color theorem :)
+<br>
+However it covers the 4 color theorem as a special case of genus 0. But weridly genus 0 was the hardest case for the coloring problem all of the others
+where found to have a trival formula as demonstrated above. It just so happens it holds for genus 0 = four color problem!!!

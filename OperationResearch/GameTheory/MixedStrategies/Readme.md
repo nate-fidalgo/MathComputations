@@ -13,6 +13,7 @@ By running thru all submatrices.
 I am taking a little longer in thinking on how to enumerate all optimal strategies in the most efficient way. Like factoring in dominance stragies to
 cut down on the number of nonsingular submatrice to have to run thru. However in general its going to be resource intensive!
 <br>
+<br>
 Right now to use practically you still have to modify FindOptimalStrategy and FindALLOptimalStrategy is what i said a work in progress.
 
 <br>

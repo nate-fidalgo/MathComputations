@@ -15,7 +15,8 @@ cut down on the number of nonsingular submatrice to have to run thru. However in
 <br>
 <br>
 Right now to use practically you still have to modify FindOptimalStrategy and FindALLOptimalStrategy is what i said a work in progress.
-
+<br>
+Isnt hard to finish just have to think for a little while on the best approach to finish these two method which one done. Anybody can just entire a payoff matrix and it give you the mixed strategies ...etc (as a special case it will do what the C# solver did for pure strategy payoff matrices )
 <br>
 <pre>
 <code>

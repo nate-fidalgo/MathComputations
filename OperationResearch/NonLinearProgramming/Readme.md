@@ -14,6 +14,7 @@ approximation algorithms
 cases when local optimals still imply global optimals (usually this is the case when we have convexity conditions but we dont have them in nonlinear programming :) )
 nonconvex programming algorithms
 lagrange multipliers and lagrange relaxation method
+interior point methods (the first famous one ellipsoidal method which proved linear programming can be done in P)
 many many more algorithms
 </code>
 </pre>

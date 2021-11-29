@@ -1,4 +1,5 @@
 
+
 /**
 
 This Matrix_String class is for doing symbolic matrix computations you can uses it to solve matrix of rational numbers in symbolic nice pretty form.
@@ -501,6 +502,149 @@ public static void shiftRow( String m[][] , String a[] , int row)
 	}
 		
 }
+
+
+//A naive matrix multiplication function that multiplies two matrices of appropriate size
+//returns the result as a String matrix
+//O(n^3) is just fine but eventually all recode to use the fastest math matrix multiplcation
+//Optimality is O(nlogn) it is believed and recently in theory it was achieved
+public static String[][] multiplyMatrix( String m1[][] , String m2[][] )
+{
+	if( m1[0].length != m2.length )
+	throw new RuntimeException("Matrices not correct size for multiplication!!!") ;
+		
+	int r = m1.length ;
+	int p = m2[0].length ;
+	
+	String result[][] = new String[r][p] ;
+	fill( result , "0") ;
+	
+	
+	for( int i = 0 ; i < r ; i++ )
+		for( int j = 0 ; j < p ; j++ )
+		{
+			for( int k = 0 ; k < m2.length ; k++ )
+			result[i][j] = add_fractions( result[i][j] , mult_fractions( m1[i][k] , m2[k][j] ) ) ; //m1[i][k] * m2[j][k] ;
+					
+		}
+			
+			
+			
+	return result ;
+	
+}
+
+//Helper function for initializing a String matrix to all values of second parameter val
+public static void fill( String m[][] , String val)
+{
+	for( int i = 0 ; i < m.length ; i++ )
+	{
+		for( int j = 0 ; j < m[0].length ; j++ )
+		{
+			m[i][j] = val ;
+		}
+		
+	}
+	
+	return ;
+}
+
+
+///computes the transpose of a matrix
+//returns the transpose of a matrix
+public static String[][] transpose( String m[][] )
+{
+	
+	String result[][] = new String[m[0].length][m.length] ;
+	
+	for( int i = 0 ; i < m.length ; i++ )
+		for( int j = 0 ; j < m[0].length ; j++ )
+		{
+			result[j][i] = m[i][j] ;
+			
+		}
+	
+	return result ;
+	
+	
+}
+
+
+
+public static int compareFraction( String frac1 , String frac2 )
+{
+	boolean isneg1 = isnegativefraction( frac1 );
+	boolean isneg2 = isnegativefraction( frac2 );
+	
+   if( Math.abs( Integer.parseInt( get_numerator( frac1 ) ) * Integer.parseInt( get_denominator( frac2 ) ) ) == Math.abs( Integer.parseInt( get_numerator( frac2 ) ) * Integer.parseInt( get_denominator( frac1 ) ) ) )
+   return 0 ;
+   
+   if( Math.abs( Integer.parseInt( get_numerator( frac1 ) ) * Integer.parseInt( get_denominator( frac2 ) ) ) > Math.abs( Integer.parseInt( get_numerator( frac2 ) ) * Integer.parseInt( get_denominator( frac1 ) ) ) )
+   {
+	   if( isneg1 == isneg2 && isneg1 == true )
+	   return -1 ;
+	   
+	   if( isneg1 == isneg2 && isneg1 == false )
+	   return 1 ;
+	   
+	   if( isneg1 != isneg2 && isneg1 == true )
+	   return  -1 ;
+	   
+	   if( isneg1 == isneg2 && isneg1 == false )
+	   return 1 ;
+	   
+   }
+   else
+   {
+	   if( isneg1 == isneg2 && isneg1 == true )
+	   return 1 ;
+	   
+	   if( isneg1 == isneg2 && isneg1 == false )
+	   return -1 ;
+	   
+	   if( isneg1 != isneg2 && isneg1 == true )
+	   return  1 ;
+	   
+	   if( isneg1 == isneg2 && isneg1 == false )
+	   return -1 ; 
+	   
+   }
+return -2; //should never get here
+	   
+	
+}
+
+
+private static boolean isnegativefraction( String frac )
+{
+   int minus1 =  get_numerator(frac).indexOf("-") ;
+   int minus2 =  get_denominator(frac).indexOf("-") ;
+	
+   if( minus1 == minus2 )
+	   return false ;
+   
+   return true ;
+   
+}
+
+
+public static String[][] scalarmult( String m[][] , String scaler )
+{
+	String outm[][] = new String[m.length][m[0].length] ;
+	for( int i = 0 ; i < m.length ; i++ )
+	{
+		for( int j = 0 ; j < m[0].length ; j++ )
+		{
+				outm[i][j] = mult_fractions( m[i][j] , scaler ) ; //m1[i][k] * m2[j][k] ;
+			
+		}
+		
+	}
+	
+	return outm ;
+	
+}
+
 
 
 //Test main to see if the function programs work and to resolve any bug issues in code

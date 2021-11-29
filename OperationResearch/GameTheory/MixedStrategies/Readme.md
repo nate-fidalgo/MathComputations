@@ -10,7 +10,12 @@ Since the number of square submatrice that are nonsingular can grow very fast th
 Most of the time people only care about find one optimal mixed strategy for each player but eventually all add in code to enumerate all.
 By running thru all submatrices.
 <br>
+I am taking a little longer in thinking on how to enumerate all optimal strategies in the most efficient way. Like factoring in dominance stragies to
+cut down on the number of nonsingular submatrice to have to run thru. However in general its going to be resource intensive!
+<br>
+Right now to use practically you still have to modify FindOptimalStrategy and FindALLOptimalStrategy is what i said a work in progress.
 
+<br>
 <pre>
 <code>
 Payoff Matrix is 

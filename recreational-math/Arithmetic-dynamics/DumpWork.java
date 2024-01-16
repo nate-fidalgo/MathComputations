@@ -12,7 +12,7 @@ public class DumpWork extends Thread {
 	{
 		if( Lychrel.currentLychrel == null )
 		return ;
-		System.out.println("dggdgdg");
+		
 		System.out.println( "For Number = " + Lychrel.currentLychrel[2]) ;
 		System.out.println( "Cycles taken = " + Lychrel.currentLychrel[1]) ;
 		System.out.print("Lychrel value = " + Lychrel.currentLychrel[0]) ;

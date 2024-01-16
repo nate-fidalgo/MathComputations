@@ -1,6 +1,6 @@
 /*
  * 
- * The purpose of this thread is to allow a mechanism to dump the where in the computation
+ * The purpose of this thread is to allow a mechanism to dump where in the computation
  * it is for the last Lychrel calculation 
  * It is nice to beable to pick up where you left off :)
  * 
